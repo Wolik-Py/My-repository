@@ -10,13 +10,19 @@ class Article(models.Model):
 		verbose_name = "Статья"
 		verbose_name_plural = 'Статьи'
 
+	def __str__(self):
+		return self.article_title
+
 class Comment(models.Model):
 
-	Article = models.ForeignKey(Article, on_delete=models.CASCADE)
-	name = models.CharField('Авто комментария' , max_length = 50)
+	article = models.ForeignKey(Article, on_delete=models.CASCADE)
+	author_name = models.CharField('Авто комментария' , max_length = 50)
 	comment_text = models.TextField('Текст комментария')
 	release_date_comment = models.DateField('Дата публикации')
 
 	class Meta:
 		verbose_name = "Комментарий"
 		verbose_name_plural = 'Комментарии'
+
+	def __str__(self):
+		return self.author_name
