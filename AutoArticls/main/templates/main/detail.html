@@ -1,0 +1,48 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}
+	{{article.article_title}}
+{% endblock %}
+
+
+{% block content %}
+	
+		<h4>{{article.article_title}}</h4>
+
+		<p>{{article.article_text}}</p>
+
+		<em>{{article.release_date}}</em>
+
+		<hr>
+
+		{% if latest_comments_list %}
+			{% for b in latest_comments_list %}
+				<p>
+					<p><b>{{b.author_name}}:</b></p>
+					<p>{{b.comment_text}}</p>
+				</p>
+			{% endfor %}
+
+		{% else %}
+		Комментарии не найдены!
+		{% endif %}
+
+		<hr>
+
+		<form action="{% url 'main:leave_comment' article.id %}" method="POST">
+			
+			{% csrf_token %}
+
+			<input type="text" required placeholder="Ваше имя" name="name"><br>
+
+			<textarea name="text" required placeholder="Текст комментария" cols="30" rows="10"></textarea><br>
+
+			<input type="date" placeholder="Дата" name="date"><br>
+
+			<button type="submit">Оставить комментарий</button>
+
+
+		</form>
+
+{% endblock %}
