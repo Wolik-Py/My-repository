@@ -18,7 +18,6 @@ class Comment(models.Model):
 	article = models.ForeignKey(Article, on_delete=models.CASCADE)
 	author_name = models.CharField('Авто комментария' , max_length = 50)
 	comment_text = models.TextField('Текст комментария')
-	release_date_comment = models.DateField('Дата публикации')
 
 	class Meta:
 		verbose_name = "Комментарий"

@@ -1,4 +1,5 @@
 {% extends 'main/layout.html' %}
+{% load static %}
 
 
 {% block title %}
@@ -7,42 +8,54 @@
 
 
 {% block content %}
-	
-		<h4>{{article.article_title}}</h4>
+
+	<div class="shapka">
+		<img src="{% static 'main/img/logo.png' %}" alt="" width="100px" height="76px" class="logo">
+	</div>
+	<div class="body_2">
+		<h4 class="title"><b>{{article.article_title}}</b></h4>
 
 		<p>{{article.article_text}}</p>
 
-		<em>{{article.release_date}}</em>
+		<em>{{article.release_date}}</em><br><br>
 
-		<hr>
+		<a href="{% url 'main:home' %}"><button class="go_index">На главную</button></a><br><br>
+
+		<div class="hr"></div>
+		<br>
+		<h2>Комментарии:</h2>
 
 		{% if latest_comments_list %}
 			{% for b in latest_comments_list %}
 				<p>
-					<p><b>{{b.author_name}}:</b></p>
-					<p>{{b.comment_text}}</p>
+					<p><b>{{b.author_name}}:</b> {{b.comment_text}}</p>
 				</p>
 			{% endfor %}
 
 		{% else %}
 		Комментарии не найдены!
 		{% endif %}
+		<br><br>
 
-		<hr>
-
-		<form action="{% url 'main:leave_comment' article.id %}" method="POST">
+		<div class="hr"></div>
+		
+		<div class="form-horizontal">
+			<form action="{% url 'main:leave_comment' article.id %}" method="POST" class="features">
 			
-			{% csrf_token %}
+				{% csrf_token %}
 
-			<input type="text" required placeholder="Ваше имя" name="name"><br>
+				<h3>Добаить комментарий:</h3>
 
-			<textarea name="text" required placeholder="Текст комментария" cols="30" rows="10"></textarea><br>
+				<input type="text" required placeholder="Ваше имя" name="name" class="form-control"><br>
 
-			<input type="date" placeholder="Дата" name="date"><br>
+				<textarea name="text" required placeholder="Текст комментария" cols="30" rows="10" class="form-control"></textarea><br>
 
-			<button type="submit">Оставить комментарий</button>
+				<button type="submit" class="btn btn-success">Оставить комментарий</button>
 
 
-		</form>
+			</form>
+		</div>
+	</div>
+
 
 {% endblock %}

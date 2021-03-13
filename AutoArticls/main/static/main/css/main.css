@@ -1,0 +1,61 @@
+div.shapka{
+	width: 100%;
+	height: 75px;
+	background-color: rgb(79, 69, 69);
+	border-bottom: solid 5px black;
+}
+img.logo{
+	margin: auto;
+	display: block;
+}
+body{
+	background-color: #333131;
+	color: #d1cfcf;
+}
+div.content_1{
+	color: white;
+}
+a:active, /* активная/посещенная ссылка */
+a:hover,  /* при наведении */
+a {
+    text-decoration: none;
+    color: #d1cfcf;
+}
+h4.title{
+	padding-top: 10px;
+	text-align: center;
+}
+ul.article{
+	padding-top: 30px;
+}
+div.hr{
+	width: 100%;
+	height: 3px;
+	background-color: white;
+}
+form{
+	margin-left: 7%;
+	width: 500px;
+	margin-top: 30px;
+}
+.features h3{
+	font-size: 30px;
+	text-align: center;
+}
+textarea{
+	resize: none;
+}
+div.body_2{
+	padding-right: 3%;
+	padding-left: 3%;
+}
+button.go_index{
+	color: white;
+	background-color: #242222;
+	border: solid 2px blue;
+	border-radius: 4px;
+}
+button.go_index:hover{
+	color: black;
+	background-color: #bdbbbb;
+}

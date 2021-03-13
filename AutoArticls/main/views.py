@@ -14,7 +14,7 @@ def detail(request, article_id):
 	except:
 		raise Http404('Статья не найдена')
 
-	latest_comments_list = a.comment_set.order_by('release_date_comment')[:10]
+	latest_comments_list = a.comment_set.order_by('author_name')[:10]
 
 	return render(request, "main/detail.html", {'article' : a, 'latest_comments_list' : latest_comments_list})
 
@@ -24,6 +24,6 @@ def leave_comment(request, article_id):
 	except:
 		raise Http404('Статья не найдена')
 
-	a.comment_set.create(author_name = request.POST['name'], comment_text = request.POST['text'], release_date_comment = request.POST['date'])
+	a.comment_set.create(author_name = request.POST['name'], comment_text = request.POST['text'])
 
 	return HttpResponseRedirect( reverse('main:detail', args = (a.id,)))

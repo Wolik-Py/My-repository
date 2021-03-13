@@ -1,17 +1,23 @@
 {% extends 'main/layout.html' %}
-
+{% load static %}
 
 {% block title %}
 	Главная
 {% endblock %}
 {% block content %}
 
-	<h4>Список статей:</h4>
+	<div class="shapka">
+		<img src="{% static 'main/img/logo.png' %}" alt="" width="100px" height="76px" class="logo">
+	</div>
+
+	<div class="content_1">
+
+	<h4 class="title">Список статей:</h4>
 	
 	{% if latest_articles_list %}
 
 		{% for a in latest_articles_list %}
-			<ul>
+			<ul class="article">
 				<li>
 				<a href="{% url 'main:detail' a.id %}">{{a.article_title}}</a><br>
 				</li>
@@ -23,5 +29,7 @@
 		Статьи не найдены
 
 	{% endif %}
+
+	</div>
 
 {% endblock %}
